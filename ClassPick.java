@@ -17,12 +17,16 @@ public class ClassPick extends JFrame implements ActionListener{
     JButton barbarianClass=new JButton("Barbarian");
     JButton warlockClass=new JButton("Warlock");
     JButton paladinClass=new JButton("Paladin");
+    JButton begin=new JButton("Begin your journey");
     ImageIcon icon=new ImageIcon("Tavern.png");
     JPanel panel=new JPanel();
     JLabel info=new JLabel();
     JLabel stats=new JLabel();
     JLabel bckground=new JLabel(icon);
-
+    static int strength;
+    static int intell;
+    static int health;
+    static String chosenClass;
     Roles mage = new Roles(35,100,90,40);
     Roles paladin = new Roles(65,200,40,120);
     Roles rogue = new Roles(100,100,100,100);
@@ -45,38 +49,79 @@ public class ClassPick extends JFrame implements ActionListener{
         rogueClass.setLocation(100, 40);
         rogueClass.addActionListener(this);
         rogueClass.setFocusable(false);
+        rogueClass.setOpaque(false);
+        rogueClass.setContentAreaFilled(false);
+        rogueClass.setBorderPainted(false);
+        rogueClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        rogueClass.setForeground(Color.orange);
         
         mageClass.setSize(100,20);
         mageClass.setLocation(100, 80);
         mageClass.addActionListener(this);
         mageClass.setFocusable(false);
+        mageClass.setOpaque(false);
+        mageClass.setContentAreaFilled(false);
+        mageClass.setBorderPainted(false);
+        mageClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        mageClass.setForeground(Color.orange);
 
         bardClass.setSize(100,20);
         bardClass.setLocation(100, 120);
         bardClass.addActionListener(this);
         bardClass.setFocusable(false);
+        bardClass.setOpaque(false);
+        bardClass.setContentAreaFilled(false);
+        bardClass.setBorderPainted(false);
+        bardClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        bardClass.setForeground(Color.orange);
         
-        barbarianClass.setSize(100,20);
-        barbarianClass.setLocation(300, 40);
+        barbarianClass.setSize(120,20);
+        barbarianClass.setLocation(290, 40);
         barbarianClass.addActionListener(this);
         barbarianClass.setFocusable(false);
+        barbarianClass.setOpaque(false);
+        barbarianClass.setContentAreaFilled(false);
+        barbarianClass.setBorderPainted(false);
+        barbarianClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        barbarianClass.setForeground(Color.orange);
 
         warlockClass.setSize(100,20);
         warlockClass.setLocation(300, 80);
         warlockClass.addActionListener(this);
         warlockClass.setFocusable(false);
+        warlockClass.setOpaque(false);
+        warlockClass.setContentAreaFilled(false);
+        warlockClass.setBorderPainted(false);
+        warlockClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        warlockClass.setForeground(Color.orange);
         
         paladinClass.setSize(100,20);
         paladinClass.setLocation(300, 120);
         paladinClass.addActionListener(this);
         paladinClass.setFocusable(false);
+        paladinClass.setOpaque(false);
+        paladinClass.setContentAreaFilled(false);
+        paladinClass.setBorderPainted(false);
+        paladinClass.setFont(new Font("Tahoma",Font.BOLD,16));
+        paladinClass.setForeground(Color.orange);
 
         stats.setText("Your stats: ");
         stats.setLocation(10,100);
         stats.setSize(200,200);
         stats.setFont(new Font("Tahoma",Font.BOLD,15));
         stats.setForeground(Color.ORANGE);
+
+        begin.setSize(250,30);
+        begin.setLocation(200,190);
+        begin.addActionListener(this);
+        begin.setFocusable(false);
+        begin.setOpaque(false);
+        begin.setContentAreaFilled(false);
+        begin.setBorderPainted(false);
+        begin.setFont(new Font("Tahoma",Font.BOLD,16));
+        begin.setForeground(Color.orange);
         
+        this.add(begin);
         this.add(rogueClass);
         this.add(mageClass);
         this.add(bardClass);
@@ -92,23 +137,68 @@ public class ClassPick extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource()==rogueClass){
             stats.setText("<html>Your stats:Strength: "+rogue.strength+"<br>Health: "+rogue.health+"<br>Intelligence: "+rogue.intelligence+"<br>Armor: "+rogue.armor+"</html>");
+            health=rogue.health;
+            strength=rogue.strength;
+            intell=rogue.intelligence;
+            chosenClass="Rogue";
         }
         else if(e.getSource()==mageClass){
             stats.setText("<html>Your stats:Strength: "+mage.strength+"<br>Health: "+mage.health+"<br>Intelligence: "+mage.intelligence+"<br>Armor: "+mage.armor+"</html>");
+            health=mage.health;
+            strength=mage.strength;
+            intell=mage.intelligence;
+            chosenClass="Mage";
         }
         else if(e.getSource()==bardClass){
             stats.setText("<html>Your stats:Strength: "+bard.strength+"<br>Health: "+bard.health+"<br>Intelligence: "+bard.intelligence+"<br>Armor: "+bard.armor+"</html>");
+            health=bard.health;
+            strength=bard.strength;
+            intell=bard.intelligence;
+            chosenClass="Bard";
         }
         else if(e.getSource()==barbarianClass){
             stats.setText("<html>Your stats:Strength: "+barbarian.strength+"<br>Health: "+barbarian.health+"<br>Intelligence: "+barbarian.intelligence+"<br>Armor: "+barbarian.armor+"</html>");
+            health=barbarian.health;
+            strength=barbarian.strength;
+            intell=barbarian.intelligence;
+            chosenClass="Barbarian";
         }
         else if(e.getSource()==warlockClass){
             stats.setText("<html>Your stats:Strength: "+warlock.strength+"<br>Health: "+warlock.health+"<br>Intelligence: "+warlock.intelligence+"<br>Armor: "+warlock.armor+"</html>");
+            health=warlock.health;
+            strength=warlock.strength;
+            intell=warlock.intelligence;
+            chosenClass="Warlock";
         }
         else if(e.getSource()==paladinClass){
             stats.setText("<html>Your stats:Strength: "+paladin.strength+"<br>Health: "+paladin.health+"<br>Intelligence: "+paladin.intelligence+"<br>Armor: "+paladin.armor+"</html>");
+            health=paladin.health;
+            strength=paladin.strength;
+            intell=paladin.intelligence;
+            chosenClass="Paladin";
         }
+        else if(e.getSource()==begin){
+            ForestEncounter FE=new ForestEncounter();
+        }
+
     }
+
+    public static int StatStrength(){
+        return strength;
+    }
+
+    public static int StatHealth(){
+        return health;
+    }
+
+    public static int StatIntell(){
+        return intell;
+    }
+
+    public static String ClassChosen(){
+        return chosenClass;
+    }
+
 
 }
 
