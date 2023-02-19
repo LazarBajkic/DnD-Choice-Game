@@ -27,6 +27,7 @@ public class ClassPick extends JFrame implements ActionListener{
     static int intell;
     static int health;
     static String chosenClass;
+    static int gold=25;
     Roles mage = new Roles(35,100,90,40);
     Roles paladin = new Roles(65,200,40,120);
     Roles rogue = new Roles(100,100,100,100);
@@ -40,6 +41,7 @@ public class ClassPick extends JFrame implements ActionListener{
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
+        this.setResizable(false);
 
         panel.setSize(500,300);
         panel.setLocation(0,0);
@@ -136,42 +138,42 @@ public class ClassPick extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource()==rogueClass){
-            stats.setText("<html>Your stats:Strength: "+rogue.strength+"<br>Health: "+rogue.health+"<br>Intelligence: "+rogue.intelligence+"<br>Armor: "+rogue.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+rogue.strength+"<br>Health: "+rogue.health+"<br>Intelligence: "+rogue.intelligence+"<br>Armor: "+rogue.armor+"<br>Gold: "+gold+"</html>");
             health=rogue.health;
             strength=rogue.strength;
             intell=rogue.intelligence;
             chosenClass="Rogue";
         }
         else if(e.getSource()==mageClass){
-            stats.setText("<html>Your stats:Strength: "+mage.strength+"<br>Health: "+mage.health+"<br>Intelligence: "+mage.intelligence+"<br>Armor: "+mage.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+mage.strength+"<br>Health: "+mage.health+"<br>Intelligence: "+mage.intelligence+"<br>Armor: "+mage.armor+"<br>Gold: "+gold+"</html>");
             health=mage.health;
             strength=mage.strength;
             intell=mage.intelligence;
             chosenClass="Mage";
         }
         else if(e.getSource()==bardClass){
-            stats.setText("<html>Your stats:Strength: "+bard.strength+"<br>Health: "+bard.health+"<br>Intelligence: "+bard.intelligence+"<br>Armor: "+bard.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+bard.strength+"<br>Health: "+bard.health+"<br>Intelligence: "+bard.intelligence+"<br>Armor: "+bard.armor+"<br>Gold: "+gold+"</html>");
             health=bard.health;
             strength=bard.strength;
             intell=bard.intelligence;
             chosenClass="Bard";
         }
         else if(e.getSource()==barbarianClass){
-            stats.setText("<html>Your stats:Strength: "+barbarian.strength+"<br>Health: "+barbarian.health+"<br>Intelligence: "+barbarian.intelligence+"<br>Armor: "+barbarian.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+barbarian.strength+"<br>Health: "+barbarian.health+"<br>Intelligence: "+barbarian.intelligence+"<br>Armor: "+barbarian.armor+"<br>Gold: "+gold+"</html>");
             health=barbarian.health;
             strength=barbarian.strength;
             intell=barbarian.intelligence;
             chosenClass="Barbarian";
         }
         else if(e.getSource()==warlockClass){
-            stats.setText("<html>Your stats:Strength: "+warlock.strength+"<br>Health: "+warlock.health+"<br>Intelligence: "+warlock.intelligence+"<br>Armor: "+warlock.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+warlock.strength+"<br>Health: "+warlock.health+"<br>Intelligence: "+warlock.intelligence+"<br>Armor: "+warlock.armor+"<br>Gold: "+gold+"</html>");
             health=warlock.health;
             strength=warlock.strength;
             intell=warlock.intelligence;
             chosenClass="Warlock";
         }
         else if(e.getSource()==paladinClass){
-            stats.setText("<html>Your stats:Strength: "+paladin.strength+"<br>Health: "+paladin.health+"<br>Intelligence: "+paladin.intelligence+"<br>Armor: "+paladin.armor+"</html>");
+            stats.setText("<html>Your stats:Strength: "+paladin.strength+"<br>Health: "+paladin.health+"<br>Intelligence: "+paladin.intelligence+"<br>Armor: "+paladin.armor+"<br>Gold: "+gold+"</html>");
             health=paladin.health;
             strength=paladin.strength;
             intell=paladin.intelligence;
@@ -179,6 +181,7 @@ public class ClassPick extends JFrame implements ActionListener{
         }
         else if(e.getSource()==begin){
             ForestEncounter FE=new ForestEncounter();
+            this.dispose();
         }
 
     }
@@ -193,6 +196,10 @@ public class ClassPick extends JFrame implements ActionListener{
 
     public static int StatIntell(){
         return intell;
+    }
+
+    public static int GoldAmnt(){
+        return gold;
     }
 
     public static String ClassChosen(){

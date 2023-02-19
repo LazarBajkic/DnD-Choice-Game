@@ -19,14 +19,13 @@ public class ForestEncounter extends JFrame implements ActionListener{
     JPanel panel=new JPanel();
     JPanel info = new JPanel();
     JLabel text = new JLabel();
-    
+    ClassPick CP = new ClassPick();
+    int strength=CP.StatStrength();
+    int health=CP.StatHealth();
+    int intell=CP.StatIntell();
+    int goldAmnt=CP.GoldAmnt();
+    String classChosen=CP.ClassChosen();
     ForestEncounter(){
-        
-        ClassPick CP = new ClassPick();
-        int strength=CP.StatStrength();
-        int health=CP.StatHealth();
-        int intell=CP.StatIntell();
-        String classChosen=CP.ClassChosen();
         
         this.setSize(670,800);
         this.setLayout(null);
@@ -60,7 +59,7 @@ public class ForestEncounter extends JFrame implements ActionListener{
         negotiate.setFont(new Font("Tahoma",Font.BOLD,15));
         negotiate.setForeground(Color.orange);
 
-        text.setText("<html>You begin your journey in the forest,as you stroll along the path<br>suddenly,a bandit jumps you from the bushes demanding your valuable<br>'Hand over the gold!'<br>What shall you do?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"</html>");
+        text.setText("<html>You begin your journey in the forest,as you stroll along the path<br>suddenly,a bandit jumps you from the bushes demanding your valuable<br>'Hand over the gold!'<br>What shall you do?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
         text.setSize(200,150);
         text.setFont(new Font("Tahoma",Font.BOLD,15));
         text.setForeground(Color.ORANGE);
@@ -85,6 +84,25 @@ public class ForestEncounter extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        if(e.getSource()==fight&&strength>=50){
+            text.setText("You overpower the bandit and lose nothing");
+        }  else if(strength<50&&e.getSource()==fight){
+            goldAmnt=goldAmnt-10;
+            text.setText("<html>You were overpowered and the bandit stole 10 gold coins from you!<br>Gold: "+goldAmnt+"</html>");
+
+        }
+
+        if(e.getSource()==comply){
+            goldAmnt=goldAmnt-15;
+            text.setText("<html>You comply and hand over the gold<br>'Thats what i thought'<br>Gold: "+goldAmnt+"</html>");
+        } 
+
+        if(e.getSource()==negotiate&&intell>=50){
+            text.setText("<html>You reason with the bandit and lose nothing</html>");
+        }else if(e.getSource()==negotiate&&intell<50){
+            goldAmnt=goldAmnt-15;
+            text.setText("<html>Your negotiations fail and you hand over the gold<br>'Sorry but im not buying it,now hand it over'<br>Gold: "+goldAmnt+"</html>");
+        }
         
     }
 }
