@@ -34,28 +34,32 @@ public class Village extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         yes.setSize(150,30);
-        yes.setLocation(100,700);
+        yes.setLocation(100,730);
         yes.addActionListener(this);
         yes.setFocusable(false);
         yes.setOpaque(false);
         yes.setContentAreaFilled(false);
         yes.setFont(new Font("Tahoma",Font.BOLD,15));
         yes.setForeground(Color.orange);
+        yes.setVisible(true);
 
         no.setSize(150,30);
-        no.setLocation(400,700);
+        no.setLocation(400,730);
         no.addActionListener(this);
         no.setFocusable(false);
         no.setOpaque(false);
         no.setContentAreaFilled(false);
         no.setFont(new Font("Tahoma",Font.BOLD,15));
         no.setForeground(Color.orange);
+        no.setVisible(true);
 
-        text.setText("<html>You arrive at the village and realize it got burnt down and is in ruins<br>you see a man standing near a burning house you approach and ask what happened<br>'Oh traveler,our homes were destroyed by a dragon which lives not far from here<br>will you slay the<br>what do you say?'<br>Accept the quest?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
+        text.setText("<html>You arrive at the village and realize it got burnt down and is in ruins<br>you see a man standing near a burning house you approach and ask what happened<br>'Oh traveler,our homes were destroyed by a dragon which lives not far from here<br>will you slay the<br>what do you say,Accept the quest?'<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
         text.setSize(200,150);
         text.setFont(new Font("Tahoma",Font.BOLD,15));
         text.setForeground(Color.orange);
 
+        info.add(yes);
+        info.add(no);
         info.setSize(670,400);
         info.setLocation(0,400);
         info.add(text);
@@ -65,8 +69,6 @@ public class Village extends JFrame implements ActionListener{
         panel.setLocation(0,0);
         panel.add(icon);
 
-        this.add(yes);
-        this.add(no);
         this.add(info);
         this.add(panel);
 
@@ -78,6 +80,10 @@ public class Village extends JFrame implements ActionListener{
         if(e.getSource()==no){
             this.dispose();
             GameOver GO=new GameOver();
+        }
+        else if(e.getSource()==yes){
+            this.dispose();
+                DragonCave DC=new DragonCave();
         }
     }
 }
