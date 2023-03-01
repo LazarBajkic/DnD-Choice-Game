@@ -11,24 +11,30 @@ import javax.swing.JPanel;
 
 public class Village extends JFrame implements ActionListener{
     
+    ImageIcon logo=new ImageIcon("logo.png");
+    ImageIcon burningVillage=new ImageIcon("BurningVillage.png");
+
     JButton yes=new JButton("Yes");
     JButton no=new JButton("No");
+    
     JPanel panel=new JPanel();
     JPanel info = new JPanel();
+    
     JLabel text = new JLabel();
-    ImageIcon burningVillage=new ImageIcon("BurningVillage.png");
     JLabel icon=new JLabel(burningVillage);
+    
     static ForestEncounter FE = new ForestEncounter();
-    int strength=FE.StatStrength();
-    int health=FE.StatHealth();
-    int intell=FE.StatIntell();
-    int goldAmnt=FE.GoldAmnt();
+    static int strength=FE.StatStrength();
+    static int health=FE.StatHealth();
+    static int intell=FE.StatIntell();
+    static int goldAmnt=FE.GoldAmnt();
     static int score=FE.Score();
     String classChosen=FE.ClassChosen();
 
     Village(){
 
         FE.dispose();
+        this.setIconImage(logo.getImage());
         this.setSize(670,800);
         this.setLayout(null);
         this.setVisible(true);

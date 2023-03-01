@@ -18,17 +18,23 @@ public class ClassPick extends JFrame implements ActionListener{
     JButton warlockClass=new JButton("Warlock");
     JButton paladinClass=new JButton("Paladin");
     JButton begin=new JButton("Begin your journey");
+    
+    ImageIcon logo=new ImageIcon("logo.png");
     ImageIcon icon=new ImageIcon("Tavern.png");
+    
     JPanel panel=new JPanel();
+    
     JLabel info=new JLabel();
     JLabel stats=new JLabel();
     JLabel bckground=new JLabel(icon);
+    
     static int strength;
     static int intell;
     static int health;
     static String chosenClass;
     static int gold=25;
     static int score=0;
+    
     Roles mage = new Roles(55,100,90,40);
     Roles paladin = new Roles(75,200,40,120);
     Roles rogue = new Roles(65,90,75,60);
@@ -38,6 +44,7 @@ public class ClassPick extends JFrame implements ActionListener{
 
     ClassPick(){
         
+        this.setIconImage(logo.getImage());
         this.setSize(500,300);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

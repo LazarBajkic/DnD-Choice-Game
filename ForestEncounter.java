@@ -15,11 +15,16 @@ public class ForestEncounter extends JFrame implements ActionListener{
     JButton comply=new JButton("Comply");
     JButton negotiate=new JButton("Negotiate");
     JButton nextEncounter=new JButton("Next");
+    
+    ImageIcon logo=new ImageIcon("logo.png");
     ImageIcon forest=new ImageIcon("Forest.png");
-    JLabel icon=new JLabel(forest);
+    
     JPanel panel=new JPanel();
     JPanel info = new JPanel();
+    
+    JLabel icon=new JLabel(forest);
     JLabel text = new JLabel();
+    
     static ClassPick CP = new ClassPick();
     static int strength=CP.StatStrength();
     static int health=CP.StatHealth();
@@ -27,8 +32,11 @@ public class ForestEncounter extends JFrame implements ActionListener{
     static int goldAmnt=CP.GoldAmnt();
     static int score=CP.Score();
     static String classChosen=CP.ClassChosen();
+    
     ForestEncounter(){
-        
+
+
+        this.setIconImage(logo.getImage());
         this.setSize(670,800);
         this.setLayout(null);
         this.setVisible(true);

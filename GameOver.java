@@ -11,17 +11,24 @@ import javax.swing.JPanel;
 
 public class GameOver extends JFrame implements ActionListener{
     
+    ImageIcon logo=new ImageIcon("logo.png");
     ImageIcon icon=new ImageIcon("GameOver.png");
-    JLabel gameOver=new JLabel(icon);
+    
     JButton titleScreen=new JButton("Play again");
     JButton quit=new JButton("Quit");
+    
     DragonCave DC=new DragonCave();
     int score = DC.Score();
+    
     JPanel panel=new JPanel();
+    
+    JLabel gameOver=new JLabel(icon);
     JLabel yourScore=new JLabel("Your score: "+score);
 
     GameOver(){
+
         DC.dispose();
+        this.setIconImage(logo.getImage());
         this.setSize(600,600);
         this.setVisible(true);
         this.setLayout(null);

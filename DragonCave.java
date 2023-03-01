@@ -11,26 +11,34 @@ import javax.swing.JPanel;
 
 public class DragonCave extends JFrame implements ActionListener{
     
+    ImageIcon logo=new ImageIcon("logo.png");
     ImageIcon dragon=new ImageIcon("Dragon.png");
+    
     JLabel icon=new JLabel(dragon);
+    JLabel text = new JLabel();
+
     JPanel panel=new JPanel();
     JPanel info = new JPanel();
-    JLabel text = new JLabel();
+    
     JButton trap=new JButton("Trap");
     JButton fight=new JButton("Fight");
     JButton next=new JButton("Next");
-    ForestEncounter FE = new ForestEncounter();
+    
+    static ForestEncounter FE = new ForestEncounter();
     static Village V=new Village();
-    int strength=FE.StatStrength();
-    int health=FE.StatHealth();
-    int intell=FE.StatIntell();
-    int goldAmnt=FE.GoldAmnt();
+    
+    static int strength=FE.StatStrength();
+    static int health=FE.StatHealth();
+    static int intell=FE.StatIntell();
+    static int goldAmnt=FE.GoldAmnt();
     static int score=V.Score();
     String classChosen=FE.ClassChosen();
 
     DragonCave(){
+
         V.dispose();
         FE.dispose();
+        this.setIconImage(logo.getImage());
         this.setSize(670,800);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);

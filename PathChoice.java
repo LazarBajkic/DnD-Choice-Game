@@ -11,23 +11,31 @@ import javax.swing.JPanel;
 
 public class PathChoice extends JFrame implements ActionListener{
 
+
+    ImageIcon logo=new ImageIcon("logo.png");
+    ImageIcon crossRoads=new ImageIcon("CrossRoads.png");
+
     JButton villagePath=new JButton("Village");
     JButton deeperPath=new JButton("Deeper");
+    
     JPanel panel=new JPanel();
     JPanel info = new JPanel();
+    
     JLabel text = new JLabel();
-    ImageIcon crossRoads=new ImageIcon("CrossRoads.png");
     JLabel icon=new JLabel(crossRoads);
-    ForestEncounter FE = new ForestEncounter();
-    int strength=FE.StatStrength();
-    int health=FE.StatHealth();
-    int intell=FE.StatIntell();
-    int goldAmnt=FE.GoldAmnt();
-    int score=FE.Score();
+    
+    static ForestEncounter FE = new ForestEncounter();
+    static int strength=FE.StatStrength();
+    static int health=FE.StatHealth();
+    static int intell=FE.StatIntell();
+    static int goldAmnt=FE.GoldAmnt();
+    static int score=FE.Score();
     String classChosen=FE.ClassChosen();
 
     PathChoice(){
+
         FE.dispose();
+        this.setIconImage(logo.getImage());
         this.setSize(670,800);
         this.setLayout(null);
         this.setVisible(true);
