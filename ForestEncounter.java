@@ -25,6 +25,7 @@ public class ForestEncounter extends JFrame implements ActionListener{
     static int health=CP.StatHealth();
     static int intell=CP.StatIntell();
     static int goldAmnt=CP.GoldAmnt();
+    static int score=CP.Score();
     static String classChosen=CP.ClassChosen();
     ForestEncounter(){
         
@@ -70,7 +71,7 @@ public class ForestEncounter extends JFrame implements ActionListener{
         nextEncounter.setForeground(Color.orange);
         nextEncounter.setVisible(false);
 
-        text.setText("<html>You begin your journey in the forest,as you stroll along the path<br>suddenly,a bandit jumps you from the bushes demanding your valuable<br>'Hand over the gold!'<br>What shall you do?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
+        text.setText("<html>You begin your journey in the forest,as you stroll along the path<br>suddenly,a bandit jumps you from the bushes demanding your valuable<br>'Hand over the gold!'<br>What shall you do?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
         text.setSize(200,150);
         text.setFont(new Font("Tahoma",Font.BOLD,15));
         text.setForeground(Color.ORANGE);
@@ -97,14 +98,16 @@ public class ForestEncounter extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource()==fight&&strength>=50){
-            text.setText("You overpower the bandit and lose nothing");
+            score=score + 50;
+            text.setText("You overpower the bandit and lose nothing,Score: "+score);
             nextEncounter.setVisible(true);
             comply.setVisible(false);
             negotiate.setVisible(false);
             fight.setVisible(false);
         }  else if(strength<50&&e.getSource()==fight){
             goldAmnt=goldAmnt-10;
-            text.setText("<html>You were overpowered and the bandit stole 10 gold coins from you!<br>Gold: "+goldAmnt+"</html>");
+            score=score + 50;
+            text.setText("<html>You were overpowered and the bandit stole 10 gold coins from you!<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
             nextEncounter.setVisible(true);
             comply.setVisible(false);
             negotiate.setVisible(false);
@@ -113,7 +116,8 @@ public class ForestEncounter extends JFrame implements ActionListener{
 
         if(e.getSource()==comply){
             goldAmnt=goldAmnt-15;
-            text.setText("<html>You comply and hand over the gold<br>'Thats what i thought'<br>Gold: "+goldAmnt+"</html>");
+            score=score+30;
+            text.setText("<html>You comply and hand over the gold<br>'Thats what i thought'<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
             nextEncounter.setVisible(true);
             comply.setVisible(false);
             negotiate.setVisible(false);
@@ -121,14 +125,16 @@ public class ForestEncounter extends JFrame implements ActionListener{
         } 
 
         if(e.getSource()==negotiate&&intell>=50){
-            text.setText("<html>You reason with the bandit and lose nothing</html>");
+            score=score + 100;
+            text.setText("<html>You reason with the bandit and lose nothing<br>Score: "+score+"</html>");
             nextEncounter.setVisible(true);
             comply.setVisible(false);
             negotiate.setVisible(false);
             fight.setVisible(false);
         }else if(e.getSource()==negotiate&&intell<50){
             goldAmnt=goldAmnt-15;
-            text.setText("<html>Your negotiations fail and you hand over the gold<br>'Sorry but im not buying it,now hand it over'<br>Gold: "+goldAmnt+"</html>");
+            score=score+30;
+            text.setText("<html>Your negotiations fail and you hand over the gold<br>'Sorry but im not buying it,now hand it over'<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
             nextEncounter.setVisible(true);
             comply.setVisible(false);
             negotiate.setVisible(false);
@@ -153,6 +159,10 @@ public class ForestEncounter extends JFrame implements ActionListener{
 
     public static int GoldAmnt(){
         return goldAmnt;
+    }
+
+    public static int Score(){
+        return score;
     }
 
     public static String ClassChosen(){

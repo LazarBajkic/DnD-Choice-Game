@@ -18,11 +18,12 @@ public class Village extends JFrame implements ActionListener{
     JLabel text = new JLabel();
     ImageIcon burningVillage=new ImageIcon("BurningVillage.png");
     JLabel icon=new JLabel(burningVillage);
-    ForestEncounter FE = new ForestEncounter();
+    static ForestEncounter FE = new ForestEncounter();
     int strength=FE.StatStrength();
     int health=FE.StatHealth();
     int intell=FE.StatIntell();
     int goldAmnt=FE.GoldAmnt();
+    static int score=FE.Score();
     String classChosen=FE.ClassChosen();
 
     Village(){
@@ -53,7 +54,7 @@ public class Village extends JFrame implements ActionListener{
         no.setForeground(Color.orange);
         no.setVisible(true);
 
-        text.setText("<html>You arrive at the village and realize it got burnt down and is in ruins<br>you see a man standing near a burning house you approach and ask what happened<br>'Oh traveler,our homes were destroyed by a dragon which lives not far from here<br>will you slay the<br>what do you say,Accept the quest?'<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
+        text.setText("<html>You arrive at the village and realize it got burnt down and is in ruins<br>you see a man standing near a burning house you approach and ask what happened<br>'Oh traveler,our homes were destroyed by a dragon which lives not far from here<br>will you slay the<br>what do you say,Accept the quest?'<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
         text.setSize(200,150);
         text.setFont(new Font("Tahoma",Font.BOLD,15));
         text.setForeground(Color.orange);
@@ -83,7 +84,13 @@ public class Village extends JFrame implements ActionListener{
         }
         else if(e.getSource()==yes){
             this.dispose();
+            score=score + 30;
                 DragonCave DC=new DragonCave();
         }
     }
+    
+    public static int Score(){
+        return score;
+    }
+    
 }

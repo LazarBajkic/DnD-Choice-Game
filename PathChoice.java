@@ -23,6 +23,7 @@ public class PathChoice extends JFrame implements ActionListener{
     int health=FE.StatHealth();
     int intell=FE.StatIntell();
     int goldAmnt=FE.GoldAmnt();
+    int score=FE.Score();
     String classChosen=FE.ClassChosen();
 
     PathChoice(){
@@ -50,7 +51,7 @@ public class PathChoice extends JFrame implements ActionListener{
         villagePath.setFont(new Font("Tahoma",Font.BOLD,15));
         villagePath.setForeground(Color.orange);
 
-        text.setText("<html>You arrive at a crossroads<br>one road leads to a village and the other deeper into the forest<br>Where will you go?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"</html>");
+        text.setText("<html>You arrive at a crossroads<br>one road leads to a village and the other deeper into the forest<br>Where will you go?<br>Your class and stats:<br>Class: "+classChosen+"<br>Str: "+strength+"<br>Intell: "+intell+"<br>Hp: "+health+"<br>Gold: "+goldAmnt+"<br>Score: "+score+"</html>");
         text.setSize(200,150);
         text.setFont(new Font("Tahoma",Font.BOLD,15));
         text.setForeground(Color.orange);
@@ -76,6 +77,11 @@ public class PathChoice extends JFrame implements ActionListener{
         if(e.getSource()==villagePath){
             this.dispose();
             Village V=new Village();
+        }
+
+        else if(e.getSource()==deeperPath){
+            DragonCave DC=new DragonCave();
+            this.dispose();
         }
     }
 }

@@ -15,9 +15,13 @@ public class GameOver extends JFrame implements ActionListener{
     JLabel gameOver=new JLabel(icon);
     JButton titleScreen=new JButton("Play again");
     JButton quit=new JButton("Quit");
+    DragonCave DC=new DragonCave();
+    int score = DC.Score();
     JPanel panel=new JPanel();
+    JLabel yourScore=new JLabel("Your score: "+score);
 
     GameOver(){
+        DC.dispose();
         this.setSize(600,600);
         this.setVisible(true);
         this.setLayout(null);
@@ -30,6 +34,11 @@ public class GameOver extends JFrame implements ActionListener{
         panel.setLocation(0, 0);
         panel.setSize(600,600);
         panel.setBackground(Color.black);
+
+        yourScore.setSize(200,100);
+        yourScore.setLocation(235,50);
+        yourScore.setForeground(Color.orange);
+        yourScore.setFont(new Font("Tahoma",Font.BOLD,20));
 
         titleScreen.setSize(200,70);
         titleScreen.setLocation(200,370);
@@ -49,6 +58,7 @@ public class GameOver extends JFrame implements ActionListener{
         quit.setForeground(Color.orange);
         quit.addActionListener(this);
 
+        this.add(yourScore);
         this.add(quit);
         this.add(titleScreen);
         this.add(gameOver);
